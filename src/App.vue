@@ -1,26 +1,96 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <el-container>
+      <el-main>
+      <a class="textstyle">{{text}}</a>
+      <sendform></sendform>
+        </el-main>
+    </el-container>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import sendform from "./components/sendform.vue";
+// 引入字体样式
+import './css/ziti.css';
+import axios from 'axios';
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    sendform,
+  },
+  data() {
+    return {
+      url: "https://v1.hitokoto.cn/?max_length=20", //api接口
+      text: ""
+    };
+  },
+  created() {
+    this.getdata();
+  },
+  methods: {
+    getdata() {
+      var that = this;
+      axios.get(this.url).then((res) => {
+        that.text = res.data.hitokoto;
+      });
+    },
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html,body{
+margin: 0px;
+padding: 0px;
+width: 100%;
+height: 100%;  
+}
+#app{
+/* background-image:transparent url(); */
+margin: 0px;
+padding: 0px;
+width: 100%;
+height: 100%;
+}
+
+#app::before{
+   content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background:transparent url('https://rain-1256608339.cos.ap-chengdu.myqcloud.com/background.jpg') center center no-repeat;
+    background-size: 100%;
+    filter:blur(5px);
+    z-index:-1;
+    background-size:cover;
+}
+
+.el-header, .el-footer {
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  line-height: 100px;
+}
+
+.el-aside {
+  text-align: center;
+  line-height: 200px;
+}
+
+.el-main {
+   position: absolute;
+    left: 50%;
+    top:30%;
+    transform: translate(-50%,-50%);
+  text-align: center;
+  line-height: 100px;
+}
+
+
+.textstyle{
+  font-family: ziti;
+  font-size: 20px;
+  color: rgb(255, 255, 255);
 }
 </style>
