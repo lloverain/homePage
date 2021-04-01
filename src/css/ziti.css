@@ -1,6 +1,0 @@
-@font-face {
-    /*自己起个名称，FontName是我起的，可修改*/
-    font-family: "ziti";
-    /*url引入字体路径*/
-    src: url('https://rain-1256608339.cos.ap-chengdu.myqcloud.com/ziti.ttf') format('truetype');
-}

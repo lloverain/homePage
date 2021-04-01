@@ -11,8 +11,6 @@
 
 <script>
 import sendform from "./components/sendform.vue";
-// 引入字体样式
-import './css/ziti.css';
 import axios from 'axios';
 export default {
   name: "App",
@@ -61,9 +59,9 @@ height: 100%;
     left:0;
     width: 100%;
     height: 100%;
-    background:transparent url('https://rain-1256608339.cos.ap-chengdu.myqcloud.com/background.jpg') center center no-repeat;
+    background:transparent url('https://rain-1256608339.cos.ap-chengdu.myqcloud.com/wallhaven-pkkm6p.png') center center no-repeat;
     background-size: 100%;
-    filter:blur(5px);
+    filter:blur(3px);
     z-index:-1;
     background-size:cover;
 }
@@ -89,7 +87,7 @@ height: 100%;
 
 
 .textstyle{
-  font-family: ziti;
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   font-size: 20px;
   color: rgb(255, 255, 255);
 }

@@ -13,6 +13,8 @@
         <el-option label="百度" selected value="1"></el-option>
         <el-option label="google" value="2"></el-option>
         <el-option label="搜狗" value="3"></el-option>
+        <el-option label="bing" value="4"></el-option>
+        
       </el-select>
     </template>
     <template #append>
@@ -25,6 +27,7 @@
 </template>
 
 <script>
+import { ElMessage } from 'element-plus'
 import axios from "axios";
 export default {
   name: "sendform",
@@ -49,10 +52,14 @@ export default {
       });
     },
     search(){
-      console.log('test')
       var that = this;
-      console.log(that.select)
-      if(that.select==1){
+      if(that.form.name==''){
+             ElMessage.warning({
+            message: '没填写内容！无法执行搜索命令......',
+            type: 'warning'
+          });
+      }else{
+        if(that.select==1){
         //百度
         window.location.href = 'https://www.baidu.com/s?wd='+that.form.name
       }else if(that.select==2){
@@ -61,7 +68,12 @@ export default {
       }else if(that.select==3){
         //搜狗
          window.location.href = 'https://www.sogou.com/web?query='+that.form.name
+      }else if(that.select==4){
+        //bing
+        window.location.href = 'https://cn.bing.com/search?q='+that.form.name
       }
+      }
+      
 
 
     }
